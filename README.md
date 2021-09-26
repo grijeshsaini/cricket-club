@@ -1,1 +1,1 @@
-# Backend application for cricket group to collect fines and nominate members for awards.
+# Backend application for cricket group members to collect and pay fines and nominate members for awards.
