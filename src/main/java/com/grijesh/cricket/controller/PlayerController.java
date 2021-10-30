@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Rest Controller for handling players api's request
@@ -26,7 +27,7 @@ public class PlayerController {
     @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void createPlayer(@Valid @RequestBody Player player) {
-        playerService.addPlayer(player);
+        playerService.createPlayer(player);
     }
 
     @GetMapping(value = "/players/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,4 +35,8 @@ public class PlayerController {
         return playerService.getPlayer(id);
     }
 
+    @GetMapping(value = "/players", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Player> getPlayers() {
+        return playerService.getPlayers();
+    }
 }
