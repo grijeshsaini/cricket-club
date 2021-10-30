@@ -1,4 +1,5 @@
 # Cricket Club Application
+[![Java CI with Gradle](https://github.com/grijeshsaini/cricket-club/actions/workflows/gradle.yml/badge.svg)](https://github.com/grijeshsaini/cricket-club/actions/workflows/gradle.yml)
 
 ## Introduction
  This application is for cricket club group members to collect and pay fines and nominate members for awards.
