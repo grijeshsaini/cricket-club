@@ -1,0 +1,32 @@
+version: "3.5"
+
+services:
+  cricket-club:
+    image: docker.io/library/cricket-club
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    environment:
+      - DB_URL=jdbc:mysql://mysql-db:3306/cricket
+      - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+
+
+  mysql-db:
+    container_name: mysqldb
+    image: mysql:5
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: cricket123
+      MYSQL_DATABASE: cricket
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -pcricket123 -e 'select 1'"]
+      interval: 5s
+      retries: 50
+

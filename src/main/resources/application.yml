@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: Cricket Club
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/changeLog.xml
+    url: ${DB_URL:jdbc:mysql://localhost:3306/cricket}
+    user: ${DB_USER:root}
+    password: ${DB_PASSWORD:cricket123}
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 30000
+      jdbc-url: ${DB_URL:jdbc:mysql://localhost:3306/cricket}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      connection-test-query: SELECT 1
+      pool-name: HikariPool
+      username: ${DB_USER:root}
+      password: ${DB_PASSWORD:cricket123}
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+server:
+  shutdown: graceful
