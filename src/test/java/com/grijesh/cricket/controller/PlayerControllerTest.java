@@ -46,6 +46,7 @@ public class PlayerControllerTest {
     public void shouldAbleToCreatePlayer() {
         final String request = """
                 {
+                    "id": 10,
                     "name" : "Grijesh",
                     "shortName" : "Big G",
                     "role" : "ADMIN"
@@ -61,6 +62,7 @@ public class PlayerControllerTest {
                 .expectStatus().isCreated();
 
         verify(playerService).createPlayer(playerArgumentCaptor.capture());
+        assertThat(playerArgumentCaptor.getValue().id()).isNull();
         assertThat(playerArgumentCaptor.getValue().name()).isEqualTo("Grijesh");
         assertThat(playerArgumentCaptor.getValue().shortName()).isEqualTo("Big G");
         assertThat(playerArgumentCaptor.getValue().role()).isEqualTo(Roles.ADMIN);
