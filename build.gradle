@@ -30,6 +30,13 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation "org.testcontainers:testcontainers:1.16.2"
+    testImplementation "org.testcontainers:mysql:1.16.2"
+    testImplementation "org.testcontainers:junit-jupiter:1.16.2"
+    testImplementation "io.rest-assured:rest-assured:4.2.0"
+    testImplementation "io.rest-assured:rest-assured-common:4.2.0"
+    testImplementation "io.rest-assured:json-path:4.2.0"
+    testImplementation "io.rest-assured:xml-path:4.2.0"
 }
 
 test {
@@ -38,3 +45,33 @@ test {
     }
     useJUnitPlatform()
 }
+
+sourceSets {
+    testIntegration {
+        java {
+            compileClasspath += main.output
+            compileClasspath += main.compileClasspath
+
+            compileClasspath += test.output
+            compileClasspath += test.compileClasspath
+
+            runtimeClasspath += test.runtimeClasspath
+        }
+
+        java.srcDir file('src/testIntegration/java')
+        resources.srcDir file('src/testIntegration/resources')
+
+    }
+}
+
+task testIntegration(type: Test, description: 'Runs integration tests.') {
+    classpath = sourceSets.testIntegration.runtimeClasspath
+    setTestClassesDirs(sourceSets.testIntegration.output.classesDirs)
+
+    testLogging {
+        events "passed", "started", "skipped", "failed"
+    }
+    useJUnitPlatform()
+}
+
+build.dependsOn testIntegration
