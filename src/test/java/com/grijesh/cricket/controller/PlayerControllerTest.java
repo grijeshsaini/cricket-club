@@ -22,6 +22,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
@@ -204,13 +205,9 @@ public class PlayerControllerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
-                .jsonPath("$[0].id").isEqualTo("1")
-                .jsonPath("$[0].name").isEqualTo(NAME)
-                .jsonPath("$[0].shortName").isEqualTo(SHORT_NAME)
-                .jsonPath("$[0].role").isEqualTo("ADMIN")
-                .jsonPath("$[1].id").isEqualTo("2")
-                .jsonPath("$[1].name").isEqualTo("Test2")
-                .jsonPath("$[1].shortName").isEqualTo("short2")
-                .jsonPath("$[1].role").isEqualTo("PLAYER");
+                .jsonPath("$[*].id").value(hasItems(1, 2))
+                .jsonPath("$[*].name").value(hasItems(NAME, "Test2"))
+                .jsonPath("$[*].shortName").value(hasItems(SHORT_NAME, "short2"))
+                .jsonPath("$[*].role").value(hasItems(Roles.ADMIN.name(), Roles.PLAYER.name()));
     }
 }

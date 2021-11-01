@@ -19,3 +19,4 @@ To start the applications locally, please follow the below steps
 - Docker
 - Swagger
 - Liquibase
+- TestContainers (To Write integration test.)

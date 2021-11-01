@@ -33,10 +33,6 @@ dependencies {
     testImplementation "org.testcontainers:testcontainers:1.16.2"
     testImplementation "org.testcontainers:mysql:1.16.2"
     testImplementation "org.testcontainers:junit-jupiter:1.16.2"
-    testImplementation "io.rest-assured:rest-assured:4.2.0"
-    testImplementation "io.rest-assured:rest-assured-common:4.2.0"
-    testImplementation "io.rest-assured:json-path:4.2.0"
-    testImplementation "io.rest-assured:xml-path:4.2.0"
 }
 
 test {
