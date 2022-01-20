@@ -10,7 +10,7 @@ jar {
 
 group 'cricket-club'
 version '1.0-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
 
 
 repositories {
