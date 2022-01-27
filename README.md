@@ -2,7 +2,7 @@
 [![Java CI with Gradle](https://github.com/grijeshsaini/cricket-club/actions/workflows/gradle.yml/badge.svg)](https://github.com/grijeshsaini/cricket-club/actions/workflows/gradle.yml)
 
 ## Introduction
- This application is for cricket club group members to collect and pay fines and nominate members for awards.
+ This application is for cricket club group members.
  
 ## Local Development
 To start the applications locally, please follow the below steps
@@ -13,7 +13,7 @@ To start the applications locally, please follow the below steps
 
 ## Technologies Used
 
-- Java-16 (Will upgrade to Java 17 LTS once gradle start supporting it).
+- Java-17.
 - Spring Boot
 - MySql
 - Docker
