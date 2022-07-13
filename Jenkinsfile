@@ -1,5 +1,6 @@
 pipeline {
 
+    agent any
     environment {
         registry = "grijeshsaini/local-services"
         registryCredential = 'dockerhub'
