@@ -10,7 +10,7 @@ pipeline {
         stage('build & test') {
             agent { docker { image 'gradle:7.3.3-jdk17' } }
             steps {
-                sh 'gradle build'
+                sh 'gradle build -x testIntegration'
             }
         }
 
