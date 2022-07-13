@@ -19,7 +19,9 @@ pipeline {
             steps {
                 script {
                     def image = docker.build registry + ":CRICKET_CLUB_$BUILD_NUMBER"
-                    image.push()
+                    docker.withRegistry( '', registryCredential ) {
+                        image.push()
+                    }
                 }
             }
         }
