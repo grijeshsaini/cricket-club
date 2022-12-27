@@ -13,7 +13,7 @@ To start the applications locally, please follow the below steps
 
 ## Technologies Used
 
-- Java-17.
+- Java-19.
 - Spring Boot
 - MySql
 - Docker

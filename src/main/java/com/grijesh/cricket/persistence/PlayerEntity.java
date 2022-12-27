@@ -1,6 +1,6 @@
 package com.grijesh.cricket.persistence;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * This entity represents Player table.
